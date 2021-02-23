@@ -1,5 +1,6 @@
 import React from 'react';
 import { gql, useQuery } from '@apollo/client';
+import { Image, List, Icon } from 'semantic-ui-react';
 
 const GET_CONTINENTS = gql`
   query {
@@ -18,7 +19,35 @@ const Continent = () => {
   return (
     <>
       {data.continents.map((element) => {
-        return <p>{element.name}</p>;
+        return (
+          <List animated verticalAlign='middle'>
+            <List.Item>
+              <List.Content
+                style={{
+                  height: '7.5rem',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  textAlign: 'center',
+                }}
+              >
+                <List.Header
+                  style={{
+                    height: '100%',
+                    fontSize: '1.5rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'space-around',
+                  }}
+                >
+                  <Icon name='world' />
+                  <p style={{ textDecoration: 'underline' }}>{element.name}</p>
+                </List.Header>
+              </List.Content>
+            </List.Item>
+          </List>
+        );
       })}
     </>
   );
